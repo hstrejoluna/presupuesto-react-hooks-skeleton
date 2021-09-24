@@ -12,22 +12,22 @@ body {
 header {
   margin: 30px 0;
 }
-.contenido {
+.content {
   padding:20px;
 }
-.contenido-principal {
+.content-main {
   background-color: white;
   padding: 30px;
   border-radius: 20px;
 }
-.presupuesto p{
+.budget p{
   margin-bottom: 0;
   font-weight: bold;
 }
-.presupuesto p span {
+.budget p span {
   font-weight: normal;
 }
-#gastos {
+#spend {
   margin-bottom: 30px;
 }
 h1 {
@@ -45,7 +45,7 @@ h2 {
   font-size:3rem!important;
   text-align: center;
 }
-.campo {
+.field {
   margin-bottom: 2rem;
 }
 .error {
@@ -78,25 +78,25 @@ h2 {
   background-color: #fff3cd;
   border-color: #ffeeba;
 }
-.gastos-realizados  {
+.spend-made  {
   margin-bottom: 2rem;
 }
-.gastos-realizados li{
+.spend-made li{
   list-style: none;
   margin-bottom: 0rem;
   border-bottom: 1px solid #e1e1e1;
   padding: 1rem 0;
 }
-.gastos-realizados li:last-of-type {
+.spend-made li:last-of-type {
   margin-bottom: 0!important;
 }
-.gastos-realizados li p {
+.spend-made li p {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin:0;
 }
-.gastos-realizados li p .gasto {
+.spend-made li p .gasto {
   background-color: #004085;
   padding: 1rem;
   color:white;
