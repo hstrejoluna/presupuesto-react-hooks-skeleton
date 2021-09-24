@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Pregunta from "./components/Pregunta";
+import Pregunta from "./components/Question";
 import Formulario from "./components/Formulario";
 import List from "./components/List";
 import BudgetControl from "./components/BudgetControl";

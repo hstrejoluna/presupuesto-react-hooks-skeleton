@@ -1,12 +1,12 @@
 import React from "react";
 import Spend from "./Spend";
 
-function Listado({ gastos }) {
+function Listado({ budget }) {
   return (
-    <div className="gastos-realizados">
-      <h2>Listado</h2>
-      {gastos.map(gasto => (
-        <Spend key={gasto.id} gasto={gasto} />
+    <div className="budget-made">
+      <h2>List</h2>
+      {budget.map(budget => (
+        <Spend key={budget.id} budget={budget} />
       ))}
     </div>
   );
