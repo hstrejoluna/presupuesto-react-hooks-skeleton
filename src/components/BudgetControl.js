@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { revisarPresupuesto } from "../helpers";
 
 const ControlPresupuesto = ({ presupuesto, restante }) => (
-  <Fragment>
+  <>
     <div className="alert alert-primary">Presupuesto: $ {presupuesto}</div>
     <div className={revisarPresupuesto(presupuesto, restante)}>
       Restantes : $ {restante}
     </div>
-  </Fragment>
+  </>
 );
 
 export default ControlPresupuesto;
