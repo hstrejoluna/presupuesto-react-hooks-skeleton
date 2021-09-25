@@ -1,47 +1,43 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import shortid from "shortid";
 import Error from "./Error";
-import shortid from 'shortid';
 
-function Formulario(props) {
-  const { guardarGasto, guardarCrearGasto } = props;
-
-  // state
-  const [nombreGasto, guardarNombreGasto] = useState("");
-  const [cantidadGasto, guardarCantidadGasto] = useState(0);
+const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
+  const [nombre, guardarNombre] = useState("");
+  const [cantidad, guardarCantidad] = useState(0);
   const [error, guardarError] = useState(false);
 
-  // Cuando se agrega el gasto
-  const agregarGasto = e => {
+  // cuando el usuario agrega un gasto
+  const agregarGasto = (e) => {
     e.preventDefault();
 
     // validar
-    if (cantidadGasto < 1 || isNaN(cantidadGasto) || nombreGasto === "") {
+    if (cantidad < 1 || isNaN(cantidad) || nombre.trim() === "") {
       guardarError(true);
       return;
     }
+    guardarError(false);
 
-    // construir objeto de gasto
+    // construir el gasto
     const gasto = {
-      nombreGasto,
-      cantidadGasto,
-      id: shortid.generate()
+      nombre,
+      cantidad,
+      id: shortid.generate(),
     };
 
     // pasar el gasto al componente principal
     guardarGasto(gasto);
     guardarCrearGasto(true);
 
-    // eliminar alerta
-    guardarError(false);
-
     // resetear el form
-    guardarNombreGasto("");
-    guardarCantidadGasto("");
+    guardarNombre("");
+    guardarCantidad(0);
   };
 
   return (
     <form onSubmit={agregarGasto}>
-      <h2>Agrega tus Gastos Aquí</h2>
+      <h2>Agrega tus gastos aquí</h2>
 
       {error ? (
         <Error mensaje="Ambos campos son obligatorios o Presupuesto Incorrecto" />
@@ -53,18 +49,19 @@ function Formulario(props) {
           type="text"
           className="u-full-width"
           placeholder="Ej. Transporte"
-          onChange={e => guardarNombreGasto(e.target.value)}
-          value={nombreGasto}
+          value={nombre}
+          onChange={(e) => guardarNombre(e.target.value)}
         />
       </div>
+
       <div className="campo">
         <label>Cantidad Gasto</label>
         <input
           type="number"
           className="u-full-width"
           placeholder="Ej. 300"
-          onChange={e => guardarCantidadGasto(parseInt(e.target.value, 10))}
-          value={cantidadGasto}
+          value={cantidad}
+          onChange={(e) => guardarCantidad(parseInt(e.target.value, 10))}
         />
       </div>
 
@@ -75,5 +72,11 @@ function Formulario(props) {
       />
     </form>
   );
-}
+};
+
+Formulario.propTypes = {
+  guardarGasto: PropTypes.func.isRequired,
+  guardarCrearGasto: PropTypes.func.isRequired,
+};
+
 export default Formulario;
